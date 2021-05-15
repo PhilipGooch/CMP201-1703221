@@ -1,0 +1,28 @@
+
+Set all nodes H values except start node and end node.
+Set start node's G value to 0.
+Set start node's parent to nullptr.
+Create current node pointer and set to start node.
+Loop:
+	Add current node to closed list.
+	If any of current node's neighbors is next to the end node:
+		Set neighbor node's parent to the current node.
+		Set current node to the neighbor node.
+		Set end node's parent to current node.
+		Break out of loop.
+	For all current node's neighbors:
+		If current node is in closed list:
+			Continue to next neighbor node.
+		Calculate the movement value. (10 for up/down/left/right, 14 for diagonals.)
+		If current node is in open list:
+			If current node's G value + the movement value to the neighbor node is less than the neighbor node's G value:
+				Set the neighbor node's parent to the current node.
+				(Do I need to give the neighbor node a new F value...?)
+				Continue to next neighbor node.
+		Calculate and set the neighbor node's G value. (This is the current node's G value + the movement value to the neighbor node.)
+		Calculate and set the F value of the neighbor node. (G + H).	
+		Set neighbor node's parent to the current node.
+		Add neighbor node to open list. 
+	Set the current node to the node with the lowest F value in the open list.
+	Remove current node from open list.
+		
